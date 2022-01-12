@@ -1,17 +1,27 @@
 import React, { useContext } from "react";
 import { NewsContext } from "../context";
+import styled from "styled-components";
 const Pagination = () => {
-  const { API, loading } = useContext(NewsContext);
+  const { API, loading, changePage, page } = useContext(NewsContext);
 
   return (
     <>
-      <h1 style={{ color: "black" }}>
-        <a href={API} target="_blank">
-          Hii
-        </a>
-      </h1>
+      <Container>
+        <button onClick={() => changePage("decrease")}>Prev</button>
+        <span>{page + 1}</span>
+        <button onClick={() => changePage("increase")}>Next</button>
+      </Container>
     </>
   );
 };
 
 export default Pagination;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > button {
+    margin: 1rem;
+  }
+`;

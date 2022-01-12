@@ -1,6 +1,7 @@
 import React, { useContext, useReducer, useEffect } from "react";
 import reducer from "./reducer";
 import { LOADING, GET_STORIES, REMOVE_STORIES, SEARCH, PAGES } from "./data";
+import { type } from "@testing-library/user-event/dist/type";
 const NewsContext = React.createContext();
 
 const NewsProvider = ({ children }) => {
@@ -13,7 +14,7 @@ const NewsProvider = ({ children }) => {
     page: 0,
     nbPages: 50,
     // query for searching
-    query: "business",
+    query: "sports",
   };
   const [state, dispatch] = useReducer(reducer, initial);
   const fetchAPI = async (url) => {
@@ -39,11 +40,26 @@ const NewsProvider = ({ children }) => {
     //   This is the final API
     const url = `${API}query=${state.query}&page=${state.page}`;
     fetchAPI(url);
-  }, []);
+  }, [state.query, state.page]);
 
+  const removeNews = (objectID) => {
+    // console.log(objectID);
+    // Now as we have got the objectID, we will set up a dispatch function
+    dispatch({ type: REMOVE_STORIES, payload: objectID });
+  };
+
+  const searchNews = (e) => {
+    dispatch({ type: SEARCH, payload: { query: e.target.value } });
+  };
+
+  const changePage = (work) => {
+    dispatch({ type: PAGES, payload: work });
+  };
   return (
     //   note inside value, it should be an oject
-    <NewsContext.Provider value={{ API, bhasa, ...state }}>
+    <NewsContext.Provider
+      value={{ API, bhasa, ...state, removeNews, searchNews, changePage }}
+    >
       {children}
     </NewsContext.Provider>
   );
