@@ -40,8 +40,10 @@ const reducer = (state, action) => {
         }
         return { ...state, page: prevPage };
       }
-    default:
       break;
+
+    default:
+      return console.log("Error");
   }
 };
 
