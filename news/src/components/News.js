@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { NewsContext } from "../context";
 import Loading from "./Loading";
 import styled from "styled-components";
+import { Button } from "@material-ui/core";
 const News = () => {
   const { loading, hits, removeNews } = useContext(NewsContext);
   if (loading)
@@ -23,16 +24,28 @@ const News = () => {
                 {url && (
                   <>
                     <Block>
-                      <a href={url} target="_blank">
-                        <h1>{title}</h1>
-                        <Span>
-                          <span>{author}</span>
-                          <span>Comments: {num_comments}</span>
-                        </Span>
-                      </a>
-                      <button onClick={() => removeNews(objectID)}>
-                        Remove
-                      </button>
+                      <h1>{title}</h1>
+
+                      <Span>
+                        <span>Author:{author}</span>
+                        <span>Comments: {num_comments}</span>
+                      </Span>
+
+                      <Buttons>
+                        <a href={url} target="_blank">
+                          <Button variant="contained" color="primary">
+                            Read
+                          </Button>
+                        </a>
+
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          onClick={() => removeNews(objectID)}
+                        >
+                          Remove
+                        </Button>
+                      </Buttons>
                     </Block>
                   </>
                 )}
@@ -53,32 +66,46 @@ const OuterContainer = styled.div`
   margin-bottom: 2rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
+  /* height: 200%; */
   gap: 1rem;
-  background-color: hsl(210, 36%, 96%);
 `;
 const Container = styled.div`
   width: 30vw;
   border: 2px solid red;
+  background-color: white;
+  padding: 0.5rem;
 `;
 
 const Span = styled.div`
   display: flex;
   justify-content: space-between;
+  letter-spacing: 1px;
+
+  text-transform: capitalize;
 `;
 
 const Block = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 2rem;
-  width: 20vw;
   border: 2px solid blue;
+  /* max-height: 100%; */
+  > h1 {
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
   > button {
     width: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+`;
+const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+
+  > a {
+    text-decoration: none;
   }
 `;

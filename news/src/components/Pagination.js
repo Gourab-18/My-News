@@ -1,15 +1,31 @@
 import React, { useContext } from "react";
 import { NewsContext } from "../context";
 import styled from "styled-components";
+import { Button } from "@material-ui/core";
+
 const Pagination = () => {
   const { API, loading, changePage, page } = useContext(NewsContext);
 
   return (
     <>
       <Container>
-        <button onClick={() => changePage("decrease")}>Prev</button>
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={loading}
+          onClick={() => changePage("decrease")}
+        >
+          Prev
+        </Button>
         <span>{page + 1}</span>
-        <button onClick={() => changePage("increase")}>Next</button>
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={loading}
+          onClick={() => changePage("increase")}
+        >
+          Next
+        </Button>
       </Container>
     </>
   );
@@ -21,6 +37,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 90vw;
   > button {
     margin: 1rem;
   }
