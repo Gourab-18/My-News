@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 const Pagination = () => {
-  const { API, loading, changePage, page } = useContext(NewsContext);
+  const { API, loading, changePage, page, nbPages } = useContext(NewsContext);
 
   return (
     <>
@@ -17,7 +17,9 @@ const Pagination = () => {
         >
           Prev
         </Button>
-        <span>{page + 1}</span>
+        <span>
+          {page + 1} of {nbPages}{" "}
+        </span>
         <Button
           variant="contained"
           color="primary"

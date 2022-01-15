@@ -24,6 +24,7 @@ const News = () => {
                 {url && (
                   <>
                     <Block>
+                      {console.log(data)}
                       <h1>{title}</h1>
 
                       <Span>
@@ -71,21 +72,13 @@ const OuterContainer = styled.div`
 `;
 const Container = styled.div`
   width: 30vw;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   background-color: white;
   padding: 0.5rem;
 `;
 
-const Span = styled.div`
-  display: flex;
-  justify-content: space-between;
-  letter-spacing: 1px;
-
-  text-transform: capitalize;
-`;
-
 const Block = styled.div`
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   /* max-height: 100%; */
   > h1 {
     letter-spacing: 2px;
@@ -100,6 +93,14 @@ const Block = styled.div`
     align-items: center;
   }
 `;
+const Span = styled.div`
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 1px;
+
+  text-transform: capitalize;
+`;
+
 const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
