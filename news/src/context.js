@@ -16,9 +16,11 @@ const NewsProvider = ({ children }) => {
     // query for searching
     query: "sports",
   };
+  // useReducer hook
   const [state, dispatch] = useReducer(reducer, initial);
+  // fetching the API
   const fetchAPI = async (url) => {
-    // console.log(url);
+    // during fetching i will load
     dispatch({ type: LOADING });
     // fetching using try catch
     try {

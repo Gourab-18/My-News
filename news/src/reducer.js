@@ -8,6 +8,7 @@ const reducer = (state, action) => {
       return { ...state, loading: true };
       break;
     case GET_STORIES:
+      // here we will change whatever is there in initial part
       return {
         //   we will return entire state + some changes
         ...state,
@@ -24,7 +25,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         query: action.payload.query,
-        page: 1,
+        page: 0,
       };
     case PAGES:
       if (action.payload == "increase") {
