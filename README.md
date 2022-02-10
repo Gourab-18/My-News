@@ -1,5 +1,5 @@
 # My-News
-Deployed site- https://my-news-gourab.herokuapp.com/
+Deployed site- https://62055b57bc89240007a8295d--silly-khorana-080c31.netlify.app/
 
 #About
 This code sample is a basic news app which fetches data from a News API. This API is hacker news API which is one of the leading news site in the business world. In this project one can search for relevant news. One can read the news in depth as clicking on the news will guide them towards the relevant news article. One can remove the news too from the page if they want. Moreover, the website has proper pagination which allows the user to go through all the news articles they are interested in and read them.
